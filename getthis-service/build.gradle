@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile gradleApi()
+  compile group: 'com.google.cloud', name: 'google-cloud-language', version: '0.20.1'
+  // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core
+  compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.6'
+
+  testCompile "junit:junit:4.12"
+}
