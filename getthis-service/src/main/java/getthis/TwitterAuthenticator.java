@@ -2,6 +2,7 @@ package main.java.getthis;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.text.ParseException;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -35,12 +36,13 @@ public class TwitterAuthenticator {
   }
 
   // TODO: set env variable GOOGLE_APPLICATION_CREDENTIALS=/Users/fsyeda/Desktop/getthis-5c46fc1ae41e.json
-  public static void main(String[] args) throws TwitterException, IOException, URISyntaxException {
+  public static void main(String[] args) throws TwitterException, IOException, URISyntaxException, ParseException {
     List<String> tweets = TwitterAuthenticator.fetchTweetsByHashtag("$VBLT"); //.forEach(System.out::println);
 
     GoogleNLPAnalyzer googleNLPAnalyzer = new GoogleNLPAnalyzer();
     tweets.forEach(googleNLPAnalyzer::analyzeSentiment);
-//    tweets.forEach(googleNLPAnalyzer::analyzeEntities);
-//    googleNLPAnalyzer.analyzeEntities("LinkedIn in acquired by Microsoft in Mountain View for $23B");
+    tweets.forEach(googleNLPAnalyzer::analyzeEntities);
+    googleNLPAnalyzer.analyzeEntities("LinkedIn in acquired by Microsoft in Mountain View for $23B");
   }
+
 }
