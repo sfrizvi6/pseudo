@@ -1,6 +1,5 @@
 package main.java.getthis;
 
-import com.google.cloud.language.v1.AnalyzeEntitiesRequest;
 import com.google.cloud.language.v1.AnalyzeEntitiesResponse;
 import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.EncodingType;
@@ -24,6 +23,7 @@ public class GoogleNLPAnalyzer {
   }
 
   public void analyzeEntities(String text) {
+    System.out.printf("Text: %s%n", text);
     Document document = Document.newBuilder().setContent(text).setType(Document.Type.PLAIN_TEXT).build();
     AnalyzeEntitiesResponse analyzeEntitiesResponse = _language.analyzeEntities(document, EncodingType.UTF8);
     analyzeEntitiesResponse.getEntitiesList().forEach(System.out::println);

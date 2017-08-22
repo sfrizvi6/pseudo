@@ -36,10 +36,11 @@ public class TwitterAuthenticator {
 
   // TODO: set env variable GOOGLE_APPLICATION_CREDENTIALS=/Users/fsyeda/Desktop/getthis-5c46fc1ae41e.json
   public static void main(String[] args) throws TwitterException, IOException, URISyntaxException {
-    List<String> tweets = TwitterAuthenticator.fetchTweetsByHashtag("$TSLA"); //.forEach(System.out::println);
+    List<String> tweets = TwitterAuthenticator.fetchTweetsByHashtag("$VBLT"); //.forEach(System.out::println);
 
     GoogleNLPAnalyzer googleNLPAnalyzer = new GoogleNLPAnalyzer();
-//    tweets.forEach(googleNLPAnalyzer::analyzeSentiment);
-    tweets.forEach(googleNLPAnalyzer::analyzeEntities);
+    tweets.forEach(googleNLPAnalyzer::analyzeSentiment);
+//    tweets.forEach(googleNLPAnalyzer::analyzeEntities);
+//    googleNLPAnalyzer.analyzeEntities("LinkedIn in acquired by Microsoft in Mountain View for $23B");
   }
 }
