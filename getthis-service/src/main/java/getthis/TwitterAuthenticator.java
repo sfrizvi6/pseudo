@@ -1,4 +1,4 @@
-package main.java.getthis;
+package getthis;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -35,7 +35,7 @@ public class TwitterAuthenticator {
     return tweets.stream().map(Status::getText).distinct().collect(Collectors.toList());
   }
 
-  // TODO: set env variable GOOGLE_APPLICATION_CREDENTIALS=/Users/fsyeda/Desktop/getthis-5c46fc1ae41e.json
+  // TODO: set env variable GOOGLE_APPLICATION_CREDENTIALS=/Users/fsyeda/Desktop/keys/getthis-5c46fc1ae41e.json
   public static void main(String[] args) throws TwitterException, IOException, URISyntaxException, ParseException {
     List<String> tweets = TwitterAuthenticator.fetchTweetsByHashtag("$VBLT"); //.forEach(System.out::println);
 

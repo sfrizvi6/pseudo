@@ -1,4 +1,4 @@
-package main.java.getthis;
+package getthis;
 
 import java.io.BufferedReader;
 import java.io.IOException;

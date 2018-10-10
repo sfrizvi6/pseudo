@@ -1,4 +1,4 @@
-package main.java.getthis;
+package getthis;
 
 import com.google.cloud.language.v1.AnalyzeEntitiesResponse;
 import com.google.cloud.language.v1.Document;

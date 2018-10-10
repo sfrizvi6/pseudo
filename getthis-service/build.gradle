@@ -4,14 +4,16 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-  compile gradleApi()
-  compile group: 'com.google.cloud', name: 'google-cloud-language', version: '0.20.1'
-  // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core
-  compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.6'
+    compile gradleApi()
+    compile group: 'com.google.cloud', name: 'google-cloud-language', version: '1.48.0'
+    // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core
+    compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.6'
+    compile group: 'org.scribe', name: 'scribe', version: '1.3.7'
+    compile group: 'org.json', name: 'json', version: '20180813'
 
-  testCompile "junit:junit:4.12"
+    testCompile "junit:junit:4.12"
 }
