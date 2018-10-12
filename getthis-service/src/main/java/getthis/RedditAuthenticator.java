@@ -14,8 +14,7 @@ import java.net.URL;
 
 
 public class RedditAuthenticator {
-    public static final String REDDIT_FETCH_POSTS_URL =
-            "https://www.reddit.com/r/java/search.json?q=wordswithfriends&sort=new";
+    private static final String REDDIT_FETCH_POSTS_URL = "https://www.reddit.com/r/java/search.json?q=jokes&sort=new";
 
     private static String getAccessToken() {
         try {
