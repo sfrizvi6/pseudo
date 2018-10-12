@@ -34,7 +34,7 @@ public class RedditAuthenticator {
         }
     }
 
-    public static JSONObject fetchPostsBySubreddit() throws IOException {
+    private static JSONObject fetchPostsBySubreddit() throws IOException {
         URL url = new URL(REDDIT_FETCH_POSTS_URL);
         HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
         httpsURLConnection.setRequestProperty("User-Agent", "Fatima");
