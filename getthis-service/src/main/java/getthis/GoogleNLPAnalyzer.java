@@ -26,11 +26,8 @@ public class GoogleNLPAnalyzer {
         analyzeEntitiesResponse.getEntitiesList().forEach(System.out::println);
     }
 
-    public void analyzeSentiment(String text) {
+    Sentiment analyzeSentiment(String text) {
         Document document = Document.newBuilder().setContent(text).setType(Document.Type.PLAIN_TEXT).build();
-        Sentiment sentiment = _language.analyzeSentiment(document).getDocumentSentiment();
-
-        System.out.printf("Text: %s%n", text);
-        System.out.printf("Sentiment: %s, %s%n", sentiment.getScore(), sentiment.getMagnitude());
+        return _language.analyzeSentiment(document).getDocumentSentiment();
     }
 }
