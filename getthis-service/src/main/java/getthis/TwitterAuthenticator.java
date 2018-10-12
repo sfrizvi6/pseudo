@@ -4,10 +4,8 @@ import com.google.cloud.language.v1.Sentiment;
 import data.AnalyzedTweet;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
+import utils.AnalyzedTweetsUtil;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -17,6 +15,7 @@ import java.util.stream.Collectors;
 public class TwitterAuthenticator {
 
     private static final Logger LOGGER = Logger.getLogger(TwitterAuthenticator.class.getSimpleName());
+    private static final String DIVIDER = "\n-------------------------------------------------------\n";
 
     private static final Twitter twitter = new TwitterFactory(new ConfigurationBuilder().setDebugEnabled(true)
             .setOAuthConsumerKey("EIUQBObVxHxYoWCI5kn4UpAgc")
@@ -43,16 +42,21 @@ public class TwitterAuthenticator {
 
         for (String tweet : tweets) {
             Sentiment sentiment = googleNLPAnalyzer.analyzeSentiment(tweet);
-            analyzedTweetList.add(new AnalyzedTweet(tweet, sentiment));
+            if (sentiment != null) {
+                analyzedTweetList.add(new AnalyzedTweet(tweet, sentiment));
+            }
         }
         return analyzedTweetList;
     }
 
     // TODO: set env variable GOOGLE_APPLICATION_CREDENTIALS=/Users/fsyeda/Desktop/keys/getthis-5c46fc1ae41e.json
     public static void main(String[] args) throws TwitterException {
-        List<AnalyzedTweet> analyzedTweetList = fetchAnalyzedTweetsByHashtag("$NFLX");
+        List<AnalyzedTweet> analyzedTweetList = fetchAnalyzedTweetsByHashtag("Pakistan");
 
-        analyzedTweetList.stream().map(AnalyzedTweet::toString).map(foo -> "----").forEach(System.out::println);
+        analyzedTweetList.stream().map(AnalyzedTweet::toString).map(analyzedTweet -> DIVIDER + analyzedTweet + DIVIDER).forEach(System.out::println);
+
+        System.out.println(AnalyzedTweetsUtil.averageSentimentScoreOfTweets(analyzedTweetList));
+        System.out.println(AnalyzedTweetsUtil.averageSentimentMagnitudeOfTweets(analyzedTweetList));
     }
 
 }

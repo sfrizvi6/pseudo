@@ -5,8 +5,8 @@ import com.google.cloud.language.v1.Sentiment;
 public class AnalyzedTweet {
 
     public final String text;
-    public final double sentimentScore;
-    public final double sentimentMagnitude;
+    public final float sentimentScore;
+    public final float sentimentMagnitude;
 
     public AnalyzedTweet(String text, Sentiment sentiment) {
         this.text = text;
