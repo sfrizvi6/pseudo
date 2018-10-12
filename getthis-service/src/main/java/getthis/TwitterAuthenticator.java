@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class TwitterAuthenticator {
 
     private static final Logger LOGGER = Logger.getLogger(TwitterAuthenticator.class.getSimpleName());
-    private static final String DIVIDER = "\n-------------------------------------------------------\n";
+    private static final String DIVIDER = "\n--------------------------------------------------------------------------------------------------------------\n";
 
     private static final Twitter twitter = new TwitterFactory(new ConfigurationBuilder().setDebugEnabled(true)
             .setOAuthConsumerKey("EIUQBObVxHxYoWCI5kn4UpAgc")
@@ -34,7 +34,7 @@ public class TwitterAuthenticator {
         return tweets.stream().map(Status::getText).distinct().collect(Collectors.toList());
     }
 
-    private static List<AnalyzedTweet> fetchAnalyzedTweetsByHashtag(String hashtag) throws TwitterException {
+    public static List<AnalyzedTweet> fetchAnalyzedTweetsByHashtag(String hashtag) throws TwitterException {
         List<String> tweets = fetchTweetsByHashtag(hashtag);
         GoogleNLPAnalyzer googleNLPAnalyzer = new GoogleNLPAnalyzer();
 
